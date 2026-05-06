@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Ordering</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1 { text-align: center; margin-bottom: 24px; font-size: 2em; color: #333; }
+h2 { margin: 24px 0 12px; color: #444; }
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    background: #ffe0cc;
+    border-radius: 12px;
+    padding: 20px 15px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    transform: translateY(-4px);
+    border-color: #ff7043;
+    box-shadow: 0 8px 20px rgba(255,112,67,0.25);
+}
+
+.menu-item .icon { font-size: 2.5em; margin-bottom: 10px; }
+.menu-item h3 { font-size: 1em; color: #333; margin-bottom: 6px; }
+.menu-item .price { font-size: 1.1em; font-weight: bold; color: #e53935; }
+.menu-item .stock { font-size: 0.75em; color: #888; margin-top: 4px; }
+
+.menu-item input[type="checkbox"] { display: none; }
+
+.menu-item input[type="checkbox"]:checked + label {
+    border-color: #27ae60;
+    box-shadow: 0 8px 20px rgba(39,174,96,0.25);
+    background: #d4edda;
+}
+
+.order-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #e53935, #ff7043);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+}
+
+.order-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(229,57,53,0.4);
+}
+
+.divider { height: 1px; background: #f0f0f0; margin: 6px 0 20px; }
+
+@media (max-width: 500px) {
+    .container { padding: 20px 16px; }
+    h1 { font-size: 1.5em; }
+    .menu-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🍕 Customer Menu</h1>
+
+    <h2>🍽️ Menu</h2>
+    <div class="divider"></div>
+
+    <div class="menu-grid">
+
+        <div class="menu-item">
+            <input type="checkbox" id="pizza">
+            <label for="pizza">
+                <div class="icon">🍕</div>
+                <h3>Pizza</h3>
+                <div class="price">₱120</div>
+                <div class="stock">Stock: 100</div>
+            </label>
+        </div>
+
+        <div class="menu-item">
+            <input type="checkbox" id="pepperoni">
+            <label for="pepperoni">
+                <div class="icon">🌶️</div>
+                <h3>Pepperoni</h3>
+                <div class="price">₱120</div>
+                <div class="stock">Stock: 50</div>
+            </label>
+        </div>
+
+        <div class="menu-item">
+            <input type="checkbox" id="veggie">
+            <label for="veggie">
+                <div class="icon">🥬</div>
+                <h3>Veggie</h3>
+                <div class="price">₱100</div>
+                <div class="stock">Stock: 50</div>
+            </label>
+        </div>
+
+        <div class="menu-item">
+            <input type="checkbox" id="hawaiian">
+            <label for="hawaiian">
+                <div class="icon">🍕</div>
+                <h3>Hawaiian</h3>
+                <div class="price">₱80</div>
+                <div class="stock">Stock: 50</div>
+            </label>
+        </div>
+
+        <div class="menu-item">
+            <input type="checkbox" id="softdrinks">
+            <label for="softdrinks">
+                <div class="icon">🥤</div>
+                <h3>Soft Drinks</h3>
+                <div class="price">₱30</div>
+                <div class="stock">Stock: 50</div>
+            </label>
+        </div>
+
+        <div class="menu-item">
+            <input type="checkbox" id="dessert">
+            <label for="dessert">
+                <div class="icon">🍰</div>
+                <h3>Dessert</h3>
+                <div class="price">₱60</div>
+                <div class="stock">Stock: 50</div>
+            </label>
+        </div>
+
+    </div>
+
+    <!-- Place Order -->
+    <a href="paymentmethod.html" class="order-btn">🧾 Place Order</a>
+</div>
+
+</body>
+</html>

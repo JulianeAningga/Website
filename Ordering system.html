@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza Ordering System - MAIN</title> </head>
+    </html>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 550px;
+    width: 100%;
+}
+h1 {
+    color: #e74c3c;
+    margin-bottom: 40px;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+.role-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+.role-btn {
+    padding: 25px 30px;
+    font-size: 1.4em;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.4s;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: block;
+}
+.admin-btn { background: linear-gradient(45deg, #3498db, #2980b9); font-size: 1.5em; }
+.customer-btn { background: linear-gradient(45deg, #2ecc71, #27ae60); font-size: 1.5em; }
+.role-btn:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>🍕 PIZZA ORDERING SYSTEM</h1>
+    <div class="role-buttons">
+        <a href="Loginsystem.html" class="role-btn admin-btn">ADMIN PANEL</a>
+        <a href="customerpage.html" class="role-btn customer-btn">CUSTOMER ORDER</a>
+    </div>
+</div>
+</body>
+</html>

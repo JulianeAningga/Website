@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Method</title>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 25px;
+    padding: 40px;
+}
+
+h1 {
+    text-align: center;
+    color: #e74c3c;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+select, input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.order-btn {
+    width: 100%;
+    padding: 15px;
+    background: red;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.order-btn:hover {
+    background: darkred;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<h1>💳 Payment Method</h1>
+
+<h2 id="totalDisplay"></h2>
+
+<select id="method" onchange="showFields()">
+    <option value="">Select Payment</option>
+    <option value="cash">CASH</option>
+    <option value="gcash">GCASH</option>
+    <option value="card">CREDIT / DEBIT</option>
+</select>
+
+<div id="fields"></div>
+
+<button class="order-btn" onclick="payNow()">PAY NOW</button>
+
+<a href="customerpage.html">
+    <button class="order-btn" style="background: gray; margin-top: 10px;"> Back</button>
+</a>
+
+</div>
+
+<script>
+const total = parseFloat(localStorage.getItem("totalBill")) || 0;
+document.getElementById("totalDisplay").innerText = "Total Bill: ₱" + total;
+
+function showFields() {
+    const method = document.getElementById("method").value;
+    const div = document.getElementById("fields");
+
+    if (method === "cash") {
+        div.innerHTML = `
+            <input type="number" id="cash" placeholder="Enter Cash Amount">
+        `;
+    }
+
+    else if (method === "gcash") {
+        div.innerHTML = `
+            <input type="number" id="num" placeholder="Enter Cellphone Number" maxlength="11">
+            <input type="number" id="amt" placeholder="Enter Amount">
+        `;
+    }
+
+    else if (method === "card") {
+        div.innerHTML = `
+            <input type="text" placeholder="Card Number">
+            <input type="text" placeholder="MM/YY">
+            <input type="text" placeholder="CVV">
+        `;
+    }
+
+    else {
+        div.innerHTML = "";
+    }
+}
+
+function payNow() {
+    const method = document.getElementById("method").value;
+
+    if (method === "") {
+        alert("Select payment method!");
+        return;
+    }
+
+    if (method === "cash") {
+        const cash = parseFloat(document.getElementById("cash").value);
+
+        if (cash >= total) {
+            alert("✅ Payment Successful!\nChange: ₱" + (cash - total));
+            finish();
+        } else {
+            alert("❌ NOT ENOUGH MONEY TO PAY");
+        }
+    }
+
+    else if (method === "gcash") {
+        const num = document.getElementById("num").value;
+        const amt = parseFloat(document.getElementById("amt").value);
+
+        if (num === "" || amt < total) {
+            alert("❌ NOT ENOUGH BALANCE / INVALID");
+        } else {
+            alert("✅ GCash Payment Successful!");
+            finish();
+        }
+    }
+
+    else if (method === "card") {
+        alert("✅ Card Payment Successful!");
+        finish();
+    }
+}
+
+function finish() {
+    localStorage.removeItem("totalBill");
+    window.location.href = "customerpage.html";
+}
+</script>
+
+</body>
+</html>
